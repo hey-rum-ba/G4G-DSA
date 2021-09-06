@@ -1,0 +1,14 @@
+bool compare(string a, string b)
+{
+    return (a+b < b+a);
+}
+ 
+string smallestString(vector<string> substrings)
+{
+    int n= substrings.size();
+    sort(substrings.begin(), substrings.end(), compare);
+    string answer = "";
+    for (int i = 0; i < n; i++)
+        answer += substrings[i];
+    return answer;
+}
