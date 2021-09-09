@@ -1,0 +1,16 @@
+void SortedStack :: sort()
+{
+    vector<int> st;
+  while(!s.empty()){
+      st.push_back(s.top());
+      s.pop();
+  }
+  
+ std::sort(st.begin(),st.end());
+  
+    for (auto itr: st) {
+      s.push(itr);
+  }
+        
+}
+ 
