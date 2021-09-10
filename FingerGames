@@ -1,0 +1,14 @@
+class Solution
+{
+public:
+    int fingerCount(int n)
+    {
+        int r = n % 8;
+    if (r == 0)
+        return 2;
+    if (r < 5)
+        return r;
+    else
+        return 10 - r;
+    }
+};
