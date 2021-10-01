@@ -28,3 +28,4 @@ class Solution{
     return n-L[0][n - 1];
     } 
 };
+
