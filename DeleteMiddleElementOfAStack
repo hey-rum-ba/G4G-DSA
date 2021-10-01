@@ -1,0 +1,51 @@
+class Solution
+{
+   public:
+   //Function to delete middle element of a stack.
+   void deleteMid(stack<int>&s, int sizeOfStack)
+   {
+       vector<int> res;
+       int n = s.size();
+       int idx;
+       if(n%2==0){
+           idx = ceil((n/2));
+       }else{
+           idx = (n/2);
+       }
+       
+       int count = 0;
+       for(int i=0;i<n;i++){
+           res.push_back(s.top());
+           s.pop();
+       }
+       
+       res.erase(res.begin()+idx);
+       
+       reverse(res.begin(),res.end());
+       for(int i=0;i<res.size();i++){
+           s.push(res[i]);
+       }
+   }
+}; //gives the reversed string but accepted
+
+
+// class Solution
+// {
+//     public:
+//     //Function to delete middle element of a stack.
+//     void deleteMid(stack<int>&s, int sizeOfStack)
+    // {
+    //     int middle = sizeOfStack/2;
+    //     stack<int> st;
+    // for(int i=0;i<sizeOfStack;i++){
+    //     if(i != middle)
+    //         st.push(s.top());
+    //         s.pop();
+    //     }
+    // while(!st.empty()){
+    //     int temp = st.top();
+    //     st.pop();
+    //     cout<<temp<<" ";
+    // }
+    // }
+//  }; gives theoritically correct output but rejected
