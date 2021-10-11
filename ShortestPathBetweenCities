@@ -1,0 +1,25 @@
+class Solution{   
+public:
+    int shortestPath( int n, int m){ 
+        // code here 
+        if (n > m) {
+        swap(n, m);
+    }
+ 
+    int a = log2(n);
+    int b = log2(m);
+
+    while (n != m)
+    {
+        if (n < m)
+            m = m >> 1;
+ 
+        if (n > m)
+            n = n >> 1;
+    }
+
+    int v = log2(n);
+ 
+    return  a + b - 2 * v;
+    }
+};
