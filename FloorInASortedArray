@@ -1,0 +1,12 @@
+int findFloor(long long int arr[], int N, long long int K) {
+    
+    //Your code here
+    if (K >= arr[N - 1])
+        return N - 1;
+    if (K < arr[0])
+        return -1;
+    for (int i = 1; i < N; i++)
+        if (arr[i] > K)
+            return (i - 1);
+    return -1;
+}
