@@ -1,0 +1,11 @@
+vector<int> inversePermutation(int arr[], int size) {
+    vector<int> ans;
+     int arr2[size];
+
+  for (int i = 0; i < size; i++)
+    arr2[arr[i] - 1] = i + 1;
+ 
+  for (int i = 0; i < size; i++)
+        ans.push_back(arr2[i]);
+  return ans;
+}
