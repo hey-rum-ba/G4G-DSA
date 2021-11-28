@@ -1,0 +1,14 @@
+bool isLucky(int n) {
+    // code here
+    static int counter = 2;
+     
+    if(counter > n)
+        return 1;
+    if(n % counter == 0)
+        return 0;
+
+    int next_position = n - (n/counter);
+     
+    counter++;
+    return isLucky(next_position);
+}
