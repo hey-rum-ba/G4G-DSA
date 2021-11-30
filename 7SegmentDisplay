@@ -1,0 +1,34 @@
+class Solution {
+  public:
+    const int seg[10] = { 6, 2, 5, 5, 4, 5, 6, 3, 7, 6};
+
+int computeSegment(int x)
+{
+    if (x == 0)
+        return seg[0];
+    int count = 0;
+    while (x)
+    {
+        count += seg[x%10];
+        x /= 10;
+    }
+ 
+    return count;
+}
+    string sevenSegments(string S, int N) {
+        // code here
+        int minseg = computeSegment(S[0]);
+        int minindex = 0;
+
+    for (int i = 1; i < N; i++)
+    {
+        int temp = computeSegment(S[i]);
+        if (temp < minseg)
+        {
+            minseg   = temp;
+            minindex = i;
+        }
+    }
+    return S[minindex];
+    }
+};
