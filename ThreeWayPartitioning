@@ -1,0 +1,25 @@
+void threeWayPartition(int arr[], int n, int a, int b)
+{
+    int start = 0, end = n-1;
+
+    for (int i=0; i<=end;)
+    {
+        if (arr[i] < a)
+        {
+          
+          if(i==start)
+          {
+            start++;
+            i++;
+          }
+          else
+            swap(arr[i++], arr[start++]);
+        }
+ 
+        else if (arr[i] > b)
+            swap(arr[i], arr[end--]);
+ 
+        else
+            i++;
+    }
+}
