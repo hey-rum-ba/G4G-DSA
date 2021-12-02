@@ -1,0 +1,7 @@
+class Solution{
+public:
+    int heapHeight(int N, int arr[]){
+        // code here
+         return ceil(log2(N + 1)) - 1;
+    }
+};
