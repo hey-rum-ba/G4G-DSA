@@ -1,0 +1,24 @@
+class Solution{
+public:
+    int rectangleCount(int A){
+        // code here
+        bool prime[A+1];
+        int res;
+        memset(prime, true, sizeof(prime));
+ 
+    for (int p = 2; p * p <= A; p++)
+    {
+        if (prime[p] == true)
+        {
+            
+            for (int i = p * p; i <= A; i += p)
+                prime[i] = false;
+        }
+    }
+ 
+    for (int p = 2; p <= A; p++)
+        if (prime[p])
+            res=p;
+    }
+    return res;
+};
