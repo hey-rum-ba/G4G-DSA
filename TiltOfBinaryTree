@@ -1,0 +1,25 @@
+class Solution
+{
+public:
+    // Your are required to complete this function
+    // function should return the tilt of the tree
+    int tiltTree(Node *root)
+    {
+        //code here
+        int tilt = 0;
+    traverse(root, &tilt);
+    return tilt;
+    }
+    int traverse(Node* root, int* tilt)
+{
+    if (!root)
+        return 0;
+ 
+    int left = traverse(root->left, tilt);
+    int right = traverse(root->right, tilt);
+ 
+    *tilt += abs(left - right);
+ 
+    return left + right + root->data;
+}
+};
