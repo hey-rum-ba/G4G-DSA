@@ -1,0 +1,21 @@
+class Solution{
+	public:
+	int countWays(int N)
+	{
+		// Your code goes here
+        long long int count, odd = N / 2, even;
+    if (N & 1)
+        odd = N / 2 + 1;
+ 
+    even = N / 2;
+ 
+    // Case 1: 2 odds and 1 even
+    count = (((odd * (odd - 1)) / 2) * even) % 1000000007;
+ 
+    // Case 2: 3 evens
+    count = (count + ((even * (even - 1) *
+                           (even - 2)) / 6)) % 1000000007;
+ 
+    return count;
+	}
+};
