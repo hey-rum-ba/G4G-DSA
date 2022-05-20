@@ -101,12 +101,20 @@ class Solution{
     vector<int> preOrder(Node* root)
     {
         //code here
-        if(root!=NULL){
-            res.push_back(root->data);
-            preOrder(root->left);
-            preOrder(root->right);
-        }
-        return res;
+       vector<int>v;
+       stack<Node*>st;
+       st.push(root);
+       while(!st.empty())
+       {
+           Node*temp=st.top();
+           st.pop();
+           v.push_back(temp->data);
+           if(temp->right)
+           st.push(temp->right);
+           if(temp->left)
+           st.push(temp->left);
+       }
+       return v;
     }
 };
 
