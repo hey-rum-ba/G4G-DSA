@@ -8,26 +8,30 @@ using namespace std;
 class Solution
 {
     public:
-    int dp(int a[],int n,int W,vector<vector<int>>& t){
-       
-       if(n==0) return 0;
-       if(t[n][W]!=-1) return t[n][W];
-       if(a[n-1]<W){
-           return t[n][W]=max(1+dp(a,n-1,a[n-1],t),dp(a,n-1,W,t));
-       }
-       else return t[n][W]=dp(a,n-1,W,t);
-       
-   } 
     //Function to find length of longest increasing subsequence.
     int longestSubsequence(int n, int a[])
     {
        // your code here
-       int x=INT_MIN;
-       for(int i=0;i<n;i++){
-           x=max(x,a[i]);
-       }
-       vector< vector<int>> t(n+2, vector<int> (x+2,-1));
-      return dp(a,n,x+1,t);
+       if (n == 0) 
+        return 0;
+
+    vector<int> tail(n, 0);
+    int length = 1; 
+
+    tail[0] = a[0];
+
+    for (int i = 1; i < n; i++) {
+
+        auto b = tail.begin(), e = tail.begin() + length;
+        auto it = lower_bound(b, e, a[i]);
+
+        if (it == tail.begin() + length)
+            tail[length++] = a[i];
+        else
+            *it = a[i];
+    }
+
+    return length;
     }
 };
 
