@@ -5,26 +5,26 @@ using namespace std;
  // } Driver Code Ends
 class Solution {
 public:
-    int path(int i, int j, int prev, vector<vector<int>>& matrix, vector<vector<int>>& dp){
+    int path(int i, int j, int prev, vector<vector<int>>& matrix, vector<vector<int>>& t){
         if(i<0 || j<0 || i>=matrix.size() || j>=matrix[0].size() || matrix[i][j]<=prev)
             return 0;
-        if(dp[i][j]) return dp[i][j];
-        return dp[i][j] = 1 + max({
-            path(i-1,j,matrix[i][j],matrix,dp),
-            path(i+1,j,matrix[i][j],matrix,dp),
-            path(i,j-1,matrix[i][j],matrix,dp),
-            path(i,j+1,matrix[i][j],matrix,dp)
+        if(t[i][j]) return t[i][j];
+        return t[i][j] = 1 + max({
+            path(i-1,j,matrix[i][j],matrix,t),
+            path(i+1,j,matrix[i][j],matrix,t),
+            path(i,j-1,matrix[i][j],matrix,t),
+            path(i,j+1,matrix[i][j],matrix,t)
         });
     }
     int longestIncreasingPath(vector<vector<int>>& matrix) {
         // Code here
         int m=matrix.size();
         int n=matrix[0].size();
-        vector<vector<int>> dp(m,vector<int>(n,0));
+        vector<vector<int>> t(m,vector<int>(n,0));
         int ans=0;
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
-                ans=max(ans,path(i,j,-1,matrix,dp));
+                ans=max(ans,path(i,j,-1,matrix,t));
             }
         }
         return ans;
