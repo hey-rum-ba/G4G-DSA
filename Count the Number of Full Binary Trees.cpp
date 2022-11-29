@@ -13,7 +13,7 @@ public:
         vector<ll> fbt(N) ;
         const ll mod = 1e9 + 7 ; 
         
-        for(int i = 0 ; i<n ; i++) fbt[a[i]] = 1 ; 
+        for(int i = 0 ; i<n ; i++) fbt[arr[i]] = 1 ; 
         ll ans = 0 ; 
         
         for(int i = 0 ; i<N ; i++){
