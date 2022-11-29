@@ -8,26 +8,45 @@ using namespace std;
 class Solution{
 public:
 	vector<int> findSubarray(int a[], int n) {
-	     // code here
-	     vector<int>v1,v2;
-         v2.push_back(-1);
-         int sum=0,Max=0;
-          for(int i=0;i<n;i++){
-              if(a[i]<0){
-                  
-                  if(sum>Max){
-                  Max=sum;
-                  v2=v1;
-              }
-                  sum=0;
-                  v1.clear();
-              }else{
-                  sum+=a[i];
-                  v1.push_back(a[i]);
-              }
-          }
-          if(sum>Max)return v1;
-          return v2;
+	    // code here
+	    vector<int> v;
+	    int prefixSum=0,maxSum=0;
+	    for(int end=0,start=0;end<n;end++){
+	        if(a[end] >=0){
+	            prefixSum+=a[end];
+	            if(prefixSum == maxSum){
+	                // two cases length equal and not equal 
+	                if(end-start == v[1]-v[0]){
+	                    if(start < v[0]){
+	                        v[0] = start;
+	                        v[1] = end;
+	                    }
+	                }else{
+	                    if(end-start > v[1]-v[0]){
+	                         v[0] = start;
+	                        v[1] = end;
+	                    }
+	                }
+	                maxSum=prefixSum;
+	            }else if(prefixSum > maxSum){
+                    v={start,end};
+	                maxSum=prefixSum;
+	            }
+	        }else{
+	            prefixSum =0;
+	            start=end+1;
+	        }
+	    }
+	    
+	    vector<int> ans;
+	    if(v.empty()){
+	        ans.push_back(-1);
+	    }else{
+	        for(int i = v[0];i<=v[1];i++){
+	            ans.push_back(a[i]);
+	        }
+	    }
+	    return ans;
 	}
 };
 
