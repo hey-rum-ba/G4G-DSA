@@ -13,38 +13,24 @@ public:
     int minOperation(string s)
     {
         // code here
-        int n = s.length();
-        int mid = n / 2;
-        int matching_count = 0;
-        int j = mid;
-
-        int i = 0;
-
-        if (n == 0 || n == 1)
-            return n;
-
-        while (i < mid)
+        int n = s.length() - 1;
+        int op = 0;
+        bool appended = false;
+        while (n >= 0)
         {
-
-            if (s[i] == s[j])
+            int currlen = n + 1;
+            if (!appended && currlen % 2 == 0 && s.substr(0, currlen / 2) == s.substr(currlen / 2, currlen / 2))
             {
-                matching_count++;
-                j++;
+                n -= (currlen / 2);
+                appended = true;
             }
-
             else
             {
-                mid = mid - 1;
-                j = mid;
-                i = 0;
-                matching_count = 0;
-                continue; // not to reach the i++ below
+                n--;
             }
-
-            i++;
+            op++;
         }
-
-        return n - matching_count + 1;
+        return op;
     }
 };
 
