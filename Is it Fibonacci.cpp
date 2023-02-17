@@ -49,7 +49,6 @@ int main()
 
         for (int i = 0; i < K; i++)
             cin >> GeekNum[i];
-
         Solution ob;
         cout << ob.solve(N, K, GeekNum) << "\n";
     }
