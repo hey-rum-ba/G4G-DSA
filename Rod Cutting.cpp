@@ -12,20 +12,11 @@ class Solution{
   public:
     int cutRod(int price[], int n) {
         //code here
-        vector<int> length(n+1);
-        for(int l=0;l<n;l++){length[l]=l+1;}
-        int dp[n+1][n+1];
-        for(int i=0;i<n+1;i++){
-            for(int j=0;j<n+1;j++){
-                if (j == 0 || i == 0) dp[i][j] = 0;
-				else if (length[i - 1] <= j) {
-				dp[i][j] = max(dp[i - 1][j],price[i - 1] + dp[i][j - length[i - 1]]);
-				}
-				else dp[i][j] = dp[i - 1][j]; 
-            }
-        }
-        
-        return dp[n][n];
+        vector<int> dp(n + 1, 0);
+        for (int i = 1; i <= n; i++)
+            for (int idx = 0; idx < i; idx++)
+                dp[i] = max(dp[i], dp[idx] + price[i - idx - 1]);
+        return dp[n];
     }
 };
 
