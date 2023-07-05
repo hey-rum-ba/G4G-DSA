@@ -33,30 +33,28 @@ public:
     int stockBuyAndSell(int n, vector<int> &prices)
     {
         // code here
-        int dp[n + 1][n + 1];
-        dp[n][0] = 0;
-        dp[n][1] = 0;
+        int buy = -1;
+        int profit = 0;
 
-        for (int i = n - 1; i >= 0; i--)
+        for (int i = 0; i < n; i++)
         {
-            for (int buy = 0; buy < 2; buy++)
+            if (buy == -1)
             {
-                long long profit = 0;
+                buy = prices[i];
+            }
 
-                if (buy)
-                {
-                    profit = max(-prices[i] + dp[i + 1][0], dp[i + 1][1]);
-                }
-                else
-                {
-                    profit = max(prices[i] + dp[i + 1][1], dp[i + 1][0]);
-                }
-
-                dp[i][buy] = profit;
+            if (i < n - 1 && prices[i] > prices[i + 1])
+            {
+                profit += (prices[i] - buy);
+                buy = -1;
+            }
+            else if (buy != -1 && i == n - 1)
+            {
+                profit += (prices[i] - buy);
             }
         }
 
-        return dp[0][1];
+        return profit;
     }
 };
 
