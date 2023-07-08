@@ -35,6 +35,43 @@ class Solution{
 
     }
 };
+/*
+class Solution{
+  public:
+    //Function to find triplets with zero sum.
+    bool findTriplets(int arr[], int n)
+    {
+        //Your code here
+        int cnt=0;
+        sort(arr, arr+n);
+        for(int i=0;i<n-2;i++){
+            int left = i + 1;
+            int right = n - 1;
+
+            while (left < right) {
+            int sum = arr[i] + arr[left] + arr[right];
+
+             if (sum == 0) {
+
+                left++;
+                right--;
+                cnt=1;
+                break;
+             }else if(sum<0){
+                 left++;
+             }else{
+                 right--;
+             }
+            }
+        }
+        if(cnt==1){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+};
+*/
 
 // { Driver Code Starts.
 int main()
