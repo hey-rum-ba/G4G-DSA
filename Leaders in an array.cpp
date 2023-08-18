@@ -6,7 +6,27 @@ using namespace std;
 
 
  // } Driver Code Ends
-    
+/*
+class Solution{
+ //Function to find the leaders in the array.
+ public:
+ vector<int> leaders(int a[], int n){
+     // Code here
+     vector<int>ans;
+     int lead = a[n-1];
+     ans.insert(ans.begin(),lead);
+     for(int i=n-2;i >= 0;i--)
+     {
+         if(lead <= a[i])
+         {
+             lead = a[i];
+             ans.insert(ans.begin(),a[i]);
+         }
+     }
+     return ans;
+ }
+};
+*/
 
 class Solution{
     //Function to find the leaders in the array.
