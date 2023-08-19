@@ -26,6 +26,37 @@ class Solution
     }
 };
 
+/*
+class Solution
+{
+    public:
+    //Function to find a continuous sub-array which adds up to a given number.
+    vector<int> subarraySum(vector<int>arr, int n, long long s)
+    {
+        // Your code here
+        if(s == 0) return {-1};
+
+        int left = 0, right = 0;
+        long long currentSum = 0;
+
+        while (right < n) {
+            currentSum += arr[right];
+
+            while (currentSum > s) {
+                currentSum -= arr[left];
+                left++;
+            }
+
+            if (currentSum == s) {
+                return {left + 1, right + 1};
+            }
+
+            right++;
+        }
+        return {-1};
+    }
+};
+*/
 // { Driver Code Starts.
 
 int main()
