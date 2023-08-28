@@ -51,6 +51,26 @@ int main() {
 		cout<<endl;
 	}
 	return 0;
+  /*
+  Node *removeDuplicates(Node *head)
+  {
+   // your code goes here
+      Node *prevNode = nullptr, *currNode = head;
+
+      while(currNode) {
+          if(prevNode && prevNode->data == currNode->data) {
+              prevNode->next = currNode->next;
+              currNode = prevNode->next;
+              continue;
+          }
+
+          prevNode = currNode;
+          currNode = currNode->next;
+      }
+
+      return head;
+  }
+  */
 }// } Driver Code Ends
 
 
