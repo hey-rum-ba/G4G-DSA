@@ -43,7 +43,25 @@ bool isLucky(int n) {
     
 }
 };
-
+/*
+class Solution{
+public:
+    bool isLucky(int n) {
+        // code here
+        int count=2;
+        while(true){
+            if(n%count == 0){
+                return false;
+            }
+            if(count>n){
+                return true;
+            }
+            n=(n-(n/count));
+            count++;
+        }
+    }
+};
+*/
 
 // { Driver Code Starts.
 signed main(){
