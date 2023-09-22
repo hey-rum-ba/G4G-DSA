@@ -24,9 +24,34 @@ class Solution{
     }
 
 };
+/*
+class Solution{
+    public:
+    // Function to find equilibrium point in the array.
+    // a: input array
+    // n: size of array
+    int equilibriumPoint(long long a[], int n) {
 
+        // Your code here
+        int i = 0, j = n-1,sum = 0;
+        while(i<j){
+            if(sum <= 0){
+                sum += a[i];
+                i++;
+            }
+            else{
+                sum -= a[j];
+                j--;
+            }
+        }
+
+        if(sum == 0) return i+1;
+        return -1;
+    }
+
+};
+*/
 // { Driver Code Starts.
-
 
 int main() {
 
